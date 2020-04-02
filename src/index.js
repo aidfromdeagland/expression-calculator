@@ -32,7 +32,9 @@ function expressionCalculator(expr) {
     while (operatorRegExp.test(expr)) {
       const exprPartRegEx = new RegExp(`([+\\-]?[\\d.e\\-]+)\\s*\\${operator}\\s*([+\\-]?[\\d.e\\-]+)`);
       const matches = expr.match(exprPartRegEx);
-      const [exprPart, partOne, partTwo] = matches;
+      const exprPart = matches[0];
+      const partOne = matches[1];
+      const partTwo = matches[2];
 
       if (partTwo === '0' && operator === '/') throw new Error('TypeError: Division by zero.');
 
